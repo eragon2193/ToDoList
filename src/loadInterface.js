@@ -1,13 +1,13 @@
- UIloader = () => {
+ export default function UIloader() {
   const content = document.getElementById('')
   function clear() {
     while(content.firstChild){
       content.removeChild(content.firstChild)
      }}
-  function Today() {
-    console.log(1)
+  function Today(arr) {
+    console.log(5)
   }
-  function Week(){
+  function Week(arr){
 
   }
   function All(array){
@@ -21,4 +21,5 @@
   function Group(){
 
   }
+  return {Today, Week, All, Group}
 }

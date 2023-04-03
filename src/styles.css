@@ -16,7 +16,6 @@ body{
 .sidebar{
   display:flex;
   flex-direction: column;
-  justify-content: center;
   grid-column: 1 / 2;
   background-color: #d9dedf;
   position:sticky;
@@ -41,8 +40,21 @@ ul{
   border-bottom:5px solid gray;
 }
 
-#add-task-btn{
+#add-btn{
+  margin:100px auto;
+  border:1px solid grey;
+  width:100px;
+  height:100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size:96px;
+  font-weight:600;
+  background-color:#c5c9ce;
   cursor: pointer;
+}
+#add-btn:hover{
+  background-color: #c7d4d6;
 }
 .fat{
   font-weight:700;
@@ -53,4 +65,18 @@ display:flex;
 justify-content: center;
 padding-top:25px;
 padding-left:20px;
+}
+.add-interface{
+  position:absolute;
+  top:0;
+  height:100%;
+  width:100%;
+  background-color:rgba(80, 80, 80, 0.4);
+  z-index:1;
+}
+.close-btn {
+  position:absolute;
+  top:20px;
+  right:20px;
+  z-index:2;
 }
