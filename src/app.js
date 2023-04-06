@@ -1,5 +1,7 @@
 import { add } from "date-fns"
+import { newTaskButton, tasks } from "./addButtons"
 import UIloader from "./loadInterface"
+
 
 // To do Tasks:
 // Small header that says Organizer/todolist/smth similar
@@ -7,8 +9,12 @@ import UIloader from "./loadInterface"
 // big scrollable list of cards with title and a date that open when you hover over them 
 
 const contentDiv = document.getElementById('content')
+const body = document.body
 const addButton = document.getElementById('add-btn')
-const UI = UIloader()
+const allTasks = document.getElementById('all-tasks')
+const importantTasks = document.getElementById('important')
+const todayTasks = document.getElementById('today')
+const UI = UIloader(contentDiv)
 
 class TaskCard {
   constructor(title, description,date){
@@ -19,20 +25,17 @@ class TaskCard {
     this.group = null;
   }
 }
+importantTasks.addEventListener('click', () => {
+  UI.Urgent(tasks)
+})
+allTasks.addEventListener('click', () => {
+  UI.All(tasks)
+})
 
 addButton.addEventListener('click', () => {
-  const addInterface = document.createElement('div')
-  addInterface.classList.add('add-interface')
-  const body = document.body
-  const btn = document.createElement('button')
-  btn.innerHTML = 'x'
-  btn.type = 'button'
-  btn.classList.add('close-btn')
-  btn.addEventListener('click', () => {
-    addInterface.remove()
-  })
-  addInterface.append(btn)
-  body.append(addInterface);
+  console.log(tasks)
+  body.append(newTaskButton())
 })
+
 
 

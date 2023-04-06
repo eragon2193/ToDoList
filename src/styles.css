@@ -26,7 +26,11 @@ body{
 #content{
   height:100%;
   grid-column: 2 / 3;
-  background-color: #c0c8c9
+  background-color: #c0c8c9;
+  display:grid;
+  gap:15px;
+  padding:20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 ul{
   width:100%;
@@ -71,12 +75,83 @@ padding-left:20px;
   top:0;
   height:100%;
   width:100%;
-  background-color:rgba(80, 80, 80, 0.4);
+  background-color:rgba(80, 80, 80, 0.3);
   z-index:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .close-btn {
-  position:absolute;
-  top:20px;
-  right:20px;
-  z-index:2;
+  position:relative;
+  margin:10px;
+  display:flex;
+  justify-content: center;;
+  padding:0;
+  font-size: 20px;
+  font-weight:600;
+  margin-left:92%;
 }
+form{
+  padding:10px;
+  display:flex;
+  flex-direction: column;
+  width:400px;
+  height:500px;
+  background-color: rgba(91, 156, 187, 0.8)
+}
+form>input, form>select{
+  margin-bottom:20px;
+}
+form>label:first-of-type{
+  margin-top:25px;
+}
+#submit-btn{
+  margin:auto;
+  width:auto;
+  height:auto;
+  font-size:24px;
+  cursor: pointer;
+}
+#submit-btn:hover{
+  background-color: rgba(191, 46, 187, 0.2);
+  border:solid 1px black;
+}
+.task-card{
+  width:250px;
+  height:200px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:10px;
+  border: royalblue 5px solid;
+}
+.date-card{
+  position:relative;
+  left:70px;
+  top:10px;
+  font-size:20px;
+}
+.description-card{
+  text-align: center;
+  height:100%;
+  width:100%;
+  border:aqua solid 1px;
+  overflow:hidden;
+  margin-top:5px;
+  font-size:18px;
+}
+.title-card{
+  font-size:24px;
+}
+.title-card::first-letter{
+  text-transform: capitalize;
+}
+.prio-card{
+  position: relative;
+  top:-130px;
+  left:105px;
+  font-weight:600;
+  font-size:24px;
+}
+
+
