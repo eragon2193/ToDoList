@@ -1,27 +1,34 @@
+import TaskCard from "./app"
+import { sortSwitch } from "./app"
+
 export const tasks = [
   {
-    date:'31/12/2024',
+    date:'2024-12-24',
     priority: '1',
     title: 'cycling',
-    description:'Learn how to cycle until next 2025'
+    description:'Learn how to cycle until next 2025',
+    addDate: 1681041807
   },
   {
-    date:'07/04/2023',
+    date:'2023-07-04',
     priority:'4',
     title:'todolist',
-    description:'Work on my Odin ToDoList'
+    description:'Work on my Odin ToDoList',
+    addDate: 1681045999
   },
   {
-    date:'11/04/2023',
+    date:'2023-04-09',
     priority:'5',
     title:'todolist',
-    description:'Work on my Odin ToDoList'
+    description:'Work on my Odin ToDoList',
+    addDate: 1681041000
   },
   {
-    date:'10/04/2023',
+    date:'2023-04-10',
     priority:'3',
     title:'todolist',
-    description:'Work on my Odin ToDoList'
+    description:'Work on my Odin ToDoList',
+    addDate: 1671041807
   }
 ]
 export function newTaskButton(){
@@ -78,19 +85,21 @@ submitButton.id = 'submit-btn'
 submitButton.type = 'button'
 submitButton.innerHTML = 'Add Task'
 submitButton.addEventListener('click', () => {
-  const object = {
-    date: dateInput.value,
-    title: titleInput.value,
-    priority: priorityInput.value,
-    description: descriptionInput.value
-  }
-  tasks.push(object)
-addInterface.remove()
+  const task = new TaskCard(
+    titleInput.value,
+    descriptionInput.value,
+    dateInput.value,
+    priorityInput.value,
+    null)
+  tasks.push(task)
+addInterface.remove() 
+sortSwitch()
 })
 
 form.append(closeButton,titleLabel,titleInput,dateLabel,dateInput,
   priorityLabel,priorityInput,descriptionLabel,descriptionInput,submitButton)
   addDiv.append(form)
 addInterface.append(addDiv)
+console.log(addDiv)
 return addInterface 
 }

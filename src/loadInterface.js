@@ -1,3 +1,4 @@
+ import { compareAsc, isSameDay, isSameWeek } from "date-fns"
  export default function UIloader(content) {
   function clear() {
     while(content.firstChild){
@@ -20,7 +21,9 @@
     const color =  colors.filter((color,index) => {
       if(index == x.priority){return color}
     })
-    console.log(color)
+    function sortPrio(a,b){
+      return a - b
+    }
     div.style.backgroundColor = color[0]
     div.append(title,desc,prio,date)
     
@@ -40,10 +43,32 @@
     })
   }
   function Today(arr) {
-    console.log(5)
+    clear()
+    const filteredArr = arr.filter((x) => {
+      const dateFormat = x.date.split('-')
+      console.log(new Date(dateFormat[0],dateFormat[1] - 1,dateFormat[2]))
+      return isSameDay(new Date(dateFormat[0],dateFormat[1] - 1,dateFormat[2]), new Date()) 
+    })
+    filteredArr.forEach((x) => {
+      const div = document.createElement('div')
+      div.classList.add('task-card')
+      cardDiv(x,div)
+      content.append(div)
+    })
   }
   function Week(arr){
+    clear()
+    const filteredArr = arr.filter((x) => {
+      const dateFormat = x.date.split('-')
 
+      return isSameWeek(new Date(dateFormat[0],dateFormat[1] - 1,dateFormat[2]), new Date()) 
+    })
+    filteredArr.forEach((x) => {
+      const div = document.createElement('div')
+      div.classList.add('task-card')
+      cardDiv(x,div)
+      content.append(div)
+    })
   }
   function All(array){
     clear()
@@ -55,8 +80,18 @@
     })
 
   }
-  function Group(){
-
+  function Group(currentGroup,arr){
+    arr.filter((x) => {
+      return x.group === currentGroup
+    })
   }
-  return {Urgent, Today, Week, All, Group}
+  function dateComparison(date1, date2)
+  {
+    const dateOne = date1.split('-')
+    const dateTwo = date2.split('-')
+    const dateOneFormat = new Date(new Date(Number(dateOne[0]),Number(dateOne[1]) - 1,Number(dateOne[2])))
+    const dateTwoFormat = new Date(new Date(Number(dateTwo[0]),Number(dateTwo[1]) - 1,Number(dateTwo[2])))
+    return compareAsc(dateOneFormat,dateTwoFormat)
+  }
+  return {dateComparison, Urgent, Today, Week, All, Group}
 }

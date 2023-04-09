@@ -13,17 +13,26 @@
     <div id="add-btn">+</div>
     <ul>
 <li id="important">Important</li>
-<li>Today</li>
-<li>This week</li>
+<li id="today">Today</li>
+<li id="week">This week</li>
 <li id="all-tasks">All tasks</li>
     </ul>
     <div class="wide-grey"></div>
+    <ul id="Groups">
+      <li data-name="Default">Default</li>
+    </ul>
     <div id="add-group-btn">
       Add Group <span class="fat"> + </span>      
     </div>
   </div>
+  <div id="main-window">
+    <select id="sorting-selection">
+      <option value='default' selected>Sort by</option>
+      <option value="prio">Priority</option>
+      <option value="date">Date</option>
+    </select>
   <div id="content">
-
+    </div>
   </div>
 </div>
 </body>
